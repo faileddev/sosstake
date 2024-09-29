@@ -266,7 +266,7 @@ new Date(Number(stakeTimeStamp[3]) * 1000).toLocaleString('en-US', {
             fontSize: "12px"
         }}>SOS</span></h1>
          ) : (
-          <h1>{truncate(toEther(susdBalance!),2)}<span style={{
+          <h1>{truncate(toEther(susdBalance!),2).toLocaleString() }<span style={{
             fontSize: "12px"
         }}>SOS</span></h1>
          )} 
@@ -436,7 +436,7 @@ new Date(Number(stakeTimeStamp[3]) * 1000).toLocaleString('en-US', {
                                 Available Balance:
                             </p>
                             <h1>
-                                {truncate(toEther(susdBalance!),2)}<span style={{
+                                {truncate(toEther(susdBalance!),2).toLocaleString() }<span style={{
                                     fontSize: "10px"
                                 }}>SOS</span>
                             </h1>
@@ -509,7 +509,7 @@ new Date(Number(stakeTimeStamp[3]) * 1000).toLocaleString('en-US', {
                             ) : (
                                 <>
                                 <p style={{marginTop: "10px"}}>Deposit</p>
-                                <h1 style={{ marginTop: "5px"}}>{mintAmount}<span style={{fontSize: "12px"}}>sUSD</span></h1>
+                                <h1 style={{ marginTop: "5px"}}>{mintAmount}<span style={{fontSize: "12px"}}>SOS</span></h1>
                                 
          
          

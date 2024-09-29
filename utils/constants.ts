@@ -17,7 +17,7 @@ const vaultContractABI = [{"inputs":[{"internalType":"string","name":"_name","ty
 
 
 
-  const stakeContract = "0xDc6Ea8E9d523f52Ec959b341E2bED7f28aF8cA2B";
+  const stakeContract = "0x234329EA252e2B1Cc03c6efcfE1f072cb35Bc754";
 const stakeContractABI = [
     {
       "inputs": [
@@ -379,7 +379,13 @@ const stakeContractABI = [
       "type": "function"
     },
     {
-      "inputs": [],
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
       "name": "returnDeposit",
       "outputs": [],
       "stateMutability": "nonpayable",

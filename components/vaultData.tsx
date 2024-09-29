@@ -10,7 +10,7 @@ const VaultData: React.FC = () => {
     const account = useActiveAccount();
 
     const vaultContract = "0xf63Fca327C555408819e26eDAc30F83E55a119f4";
-    const stakeContract = "0xDc6Ea8E9d523f52Ec959b341E2bED7f28aF8cA2B";
+    const stakeContract = "0x234329EA252e2B1Cc03c6efcfE1f072cb35Bc754";
 
 
     const { data: vaultTotalSupply, isLoading: loadingVaultTotalSupply} = useReadContract ({
@@ -101,7 +101,7 @@ const VaultData: React.FC = () => {
                 
             ) : (
                 
-                <h3>{truncate(toEther(vaultTotalSupply!),2)}<span style={{fontSize: "8px"}}>SOS</span></h3>
+                <h3>{truncate(toEther(vaultTotalSupply!),2).toLocaleString() }<span style={{fontSize: "8px"}}>SOS</span></h3>
                 
             )}
 
@@ -127,7 +127,7 @@ const VaultData: React.FC = () => {
                 
             ) : (
                 
-                <h3>{truncate(toEther(totalDeposit!),2)}<span style={{fontSize: "8px"}}>SOS</span></h3>
+                <h3>{truncate(toEther(totalDeposit!),2).toLocaleString() }<span style={{fontSize: "8px"}}>SOS</span></h3>
                 
             )}
                     
