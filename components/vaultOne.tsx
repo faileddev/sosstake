@@ -393,18 +393,7 @@ new Date(Number(stakeTimeStamp[3]) * 1000).toLocaleString('en-US', {
                             borderRadius: "10px",
                             maxWidth: "500px",
                         }}>
-                            <button style={{
-                                position: "absolute",
-                                top: 5,
-                                right: 5,
-                                padding: "5px",
-                                margin: "10px",
-                                fontSize: "0.5rem",
-                            }}
-                            onClick={() => setIsMinting(false)}
-                            >
-                                X
-                            </button>
+                            
                             <h1>
                                 Deposit SOS
                             </h1>
@@ -501,9 +490,10 @@ new Date(Number(stakeTimeStamp[3]) * 1000).toLocaleString('en-US', {
                                 )}
                                 style={{
                                     width: "100%",
-                                    margin: "10px 0",
+                                    marginTop: "10px",
                                 }}
                                 >Set Approval</TransactionButton>
+                                
                                 </>
 
                             ) : (
@@ -539,8 +529,28 @@ new Date(Number(stakeTimeStamp[3]) * 1000).toLocaleString('en-US', {
                             ) } 
                             
                             
+                            <button style={{
+                                marginTop: "5px",
+                                marginBottom: "5px",
+                                padding: "10px",
+                                backgroundColor: "#efefef",
+                                border: "none",
+                                borderRadius: "6px",
+                                color: "#333",
+                                fontSize: "1rem",
+                                cursor: "pointer",
+                                width: "100%",
+                                height: "42px"
+                                }}
+                                onClick={() => setIsMinting(false)}
+                    
+                                    >
+
+                                    Close
+                                    </button>
                             
                         </div>
+                        
                     </div>
                 )}
 
@@ -570,18 +580,7 @@ new Date(Number(stakeTimeStamp[3]) * 1000).toLocaleString('en-US', {
                             borderRadius: "10px",
                             maxWidth: "500px",
                         }}>
-                            <button style={{
-                                position: "absolute",
-                                top: 5,
-                                right: 5,
-                                padding: "5px",
-                                margin: "10px",
-                                fontSize: "0.5rem",
-                            }}
-                            onClick={() => setIsRedeeming(false)}
-                            >
-                                X
-                            </button>
+                            
                             <h1>
                                 Withdraw SOS
                             </h1>
@@ -720,6 +719,25 @@ new Date(Number(stakeTimeStamp[3]) * 1000).toLocaleString('en-US', {
                             >
                                 Emergency Withdrawal
                             </TransactionButton>
+                            <button style={{
+                                marginTop: "5px",
+                                marginBottom: "5px",
+                                padding: "10px",
+                                backgroundColor: "#efefef",
+                                border: "none",
+                                borderRadius: "6px",
+                                color: "#333",
+                                fontSize: "1rem",
+                                cursor: "pointer",
+                                width: "100%",
+                                height: "42px"
+                                }}
+                                onClick={() => setIsRedeeming(false)}
+                    
+                                    >
+
+                                    Close
+                            </button>
                         </div>
                     </div>
                 )}
