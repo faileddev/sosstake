@@ -170,12 +170,26 @@ const isUnlockDateReached = currentTime >= unlockTime;
                     
                     
                 }}>
-                    <h1>Starter Vault</h1>
-                    <p>{lockPeriod ? 
-    formatDuration(Number(lockPeriod))  // Convert and format the duration
-    : 
-    'Not Staked'
-} || <span style={{fontSize: "12px"}}> 0.0144 sUSD is mined per day for every SOS staked</span></p>
+                    <div style={{display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between"
+                    }}>
+                        <div>
+                            <h1>Entry Vault</h1>
+                            <p style={{marginTop: "2px"}}>1 SOS = 0.001<span style={{fontSize: "10px"}}>sUSD</span> Daily </p>
+                        </div>
+
+                        <div style={{textAlign: "right"}}>
+                            
+                            
+                            <h1>{lockPeriod ?
+                                formatDuration(Number(lockPeriod))  // Convert and format the duration
+                                :
+                                'Not Staked'
+                            } </h1>
+                            <p> Lock Period</p>
+                        </div>
+                    </div>
                     
                     
                     <div style={{
@@ -390,59 +404,8 @@ const isUnlockDateReached = currentTime >= unlockTime;
                                 
                                 
                                 />
-                                <TransactionButton
-                                transaction={() => (
-                                    approve ({
-                                        contract: VAULT_CONTRACT,
-                                        spender: STAKE_CONTRACT.address,
-                                        amount: mintAmount,
-                                    })
-                                )}
-                                onTransactionConfirmed={() => (
-                                    setMintingState("approved")
-                                )}
-                                style={{
-                                    width: "100%",
-                                    marginTop: "10px",
-                                }}
-                                >Set Approval</TransactionButton>
-                                
-                                </>
 
-                            ) : (
-                                <>
-                                <p style={{marginTop: "10px"}}>Deposit</p>
-                                <h1 style={{ marginTop: "5px"}}>{mintAmount.toLocaleString()}<span style={{fontSize: "12px"}}>SOS</span></h1>
-                                
-         
-         
-                                <TransactionButton style={{width:"100%", marginTop:"10px",}}
-                                 transaction={() => (
-                                    prepareContractCall({
-                                        contract: STAKE_CONTRACT,
-                                        method: "stake",
-                                        params: [toWei(mintAmount.toString())],
-                                    })
-                                 )}
-                                 onTransactionConfirmed={() => {
-                                    setMintAmount(100);
-                                    setMintingState("init");
-                                    refetchSusdBalance;
-                                    refetchStakedBalance;
-                                    setIsMinting(false);
-                                 }}
-                                >
-                                    Deposit SOS
-                                </TransactionButton>
-                                
-
-                                
-                                </>
-                                
-                            ) } 
-                            
-                            
-                            <div style={{
+<div style={{
                             display: "flex",
                             flexDirection: "row",
                             width: "100%",
@@ -547,6 +510,61 @@ const isUnlockDateReached = currentTime >= unlockTime;
                         
                         </div>
 
+                                <TransactionButton
+                                transaction={() => (
+                                    approve ({
+                                        contract: VAULT_CONTRACT,
+                                        spender: STAKE_CONTRACT.address,
+                                        amount: mintAmount,
+                                    })
+                                )}
+                                onTransactionConfirmed={() => (
+                                    setMintingState("approved")
+                                )}
+                                style={{
+                                    width: "100%",
+                                    marginTop: "10px",
+                                }}
+                                >Set Approval</TransactionButton>
+                                
+                                </>
+
+                            ) : (
+                                <>
+                                <p style={{marginTop: "10px"}}>Deposit</p>
+                                <h1 style={{ marginTop: "5px"}}>{mintAmount.toLocaleString()}<span style={{fontSize: "12px"}}>SOS</span></h1>
+                                
+         
+         
+                                <TransactionButton style={{width:"100%", marginTop:"10px",}}
+                                 transaction={() => (
+                                    prepareContractCall({
+                                        contract: STAKE_CONTRACT,
+                                        method: "stake",
+                                        params: [toWei(mintAmount.toString())],
+                                    })
+                                 )}
+                                 onTransactionConfirmed={() => {
+                                    setMintAmount(100);
+                                    setMintingState("init");
+                                    refetchSusdBalance;
+                                    refetchStakedBalance;
+                                    setIsMinting(false);
+                                 }}
+                                 
+                                >
+                                    Deposit SOS
+                                </TransactionButton>
+                                
+
+                                
+                                </>
+                                
+                            ) } 
+                            
+                            
+                            
+
                         
                             
                             <button style={{
@@ -646,50 +664,7 @@ const isUnlockDateReached = currentTime >= unlockTime;
                             
                             
                              
-                            <TransactionButton style={{marginTop: "10px", width: "100%"}}
-                            transaction={() => (
-                                prepareContractCall({
-                                    contract: STAKE_CONTRACT,
-                                    method: "unstake",
-                                    params: [toWei(redeemAmount.toString())] 
-                                })
-                            )}
-                            onTransactionConfirmed={() => {
-                                setRedeemAmount(0);
-                                refetchSusdBalance;
-                                refetchStakedBalance;
-                                setIsRedeeming(false);
-                            }}
-                            disabled={!isUnlockDateReached}
-                            >
-                                Withdraw SOS
-                            </TransactionButton>
-
                             
-
-
-
-                            
-                            <TransactionButton style={{marginTop: "5px", width: "100%",
-                                        backgroundColor: "red",
-                                        color: "white",}}
-                            transaction={() => (
-                                prepareContractCall({
-                                    contract: STAKE_CONTRACT,
-                                    method: "earlyWithdraw",
-                                    params: [toWei(redeemAmount.toString())] 
-                                })
-                            )}
-                            onTransactionConfirmed={() => {
-                                setRedeemAmount(0);
-                                refetchSusdBalance;
-                                refetchStakedBalance;
-                                setIsRedeeming(false);
-                            }}
-                            disabled={isUnlockDateReached}
-                            >
-                                Emergency Withdrawal
-                            </TransactionButton>
                             <div style={{
                             display: "flex",
                             flexDirection: "row",
@@ -874,6 +849,53 @@ new Date(Number(stakeTimeStamp[3]) * 1000).toLocaleString('en-US', {
                                     >
                                         Claim Reward
                                     </TransactionButton>
+
+                                    <TransactionButton style={{marginTop: "5px", width: "100%"}}
+                            transaction={() => (
+                                prepareContractCall({
+                                    contract: STAKE_CONTRACT,
+                                    method: "unstake",
+                                    params: [toWei(redeemAmount.toString())] 
+                                })
+                            )}
+                            onTransactionConfirmed={() => {
+                                setRedeemAmount(0);
+                                refetchSusdBalance;
+                                refetchStakedBalance;
+                                setIsRedeeming(false);
+                            }}
+                            disabled={!isUnlockDateReached}
+                            >
+                                Withdraw SOS
+                            </TransactionButton>
+
+                            
+
+
+
+                            
+                            <TransactionButton style={{marginTop: "5px", width: "100%",
+                                        backgroundColor: "red",
+                                        color: "white",}}
+                            transaction={() => (
+                                prepareContractCall({
+                                    contract: STAKE_CONTRACT,
+                                    method: "earlyWithdraw",
+                                    params: [toWei(redeemAmount.toString())] 
+                                })
+                            )}
+                            onTransactionConfirmed={() => {
+                                setRedeemAmount(0);
+                                refetchSusdBalance;
+                                refetchStakedBalance;
+                                setIsRedeeming(false);
+                            }}
+                            disabled={isUnlockDateReached}
+                            >
+                                Emergency Withdrawal
+                            </TransactionButton>
+
+
                             <button style={{
                                 marginTop: "5px",
                                 marginBottom: "5px",
