@@ -2,6 +2,9 @@ import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { STAKE_CONTRACT, VAULT_CONTRACT  } from "../utils/constants";
 import { balanceOf } from "thirdweb/extensions/erc20";
 import { toEther } from "thirdweb";
+import Sos from "../components/red logo.svg"
+import Image from "next/image";
+import Link from "next/link";
 
 
 
@@ -101,14 +104,24 @@ const VaultData: React.FC = () => {
                 
             ) : (
                 
-                <h3>{truncate(toEther(vaultTotalSupply!),2).toLocaleString() }<span style={{fontSize: "8px"}}>SOS</span></h3>
+                <h3>{truncate(toEther(vaultTotalSupply!),2).toLocaleString() }
+                
+                <Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
+                    src={Sos}
+                    alt='logo'
+                    />
+
+
+                </h3>
                 
             )}
 
-<p style={{
+<Link style={{
                     fontSize: "8px",
                     marginTop: "5px"
-                }}>View on Basescan</p>
+                }}
+                
+                href={"https://basescan.org/token/0xf63fca327c555408819e26edac30f83e55a119f4"}>View on Basescan</Link>
 
 
                     </div>
@@ -132,7 +145,14 @@ const VaultData: React.FC = () => {
                 
             ) : (
                 
-                <h3>{truncate(toEther(totalDeposit!),2).toLocaleString() }<span style={{fontSize: "8px"}}>SOS</span></h3>
+                <h3>{truncate(toEther(totalDeposit!),2).toLocaleString() }
+                
+                <Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
+                    src={Sos}
+                    alt='logo'
+                    />                
+                
+                </h3>
                 
             )}
                 

@@ -171,7 +171,7 @@ export default function Home() {
                     <p style={{
                       marginTop: "10px"
                     }}>
-              SOS is the governance token for the Stacks Of Sats protocol, staking your SOS tokens makes you eligble to earn a part of the protocol's revenue. The rewards are paid out in the protocol's stablecoin which can be redeemed at a 1:1 value.
+              SOS is the governance token for the Stacks Of Sats protocol, staking your SOS tokens makes you eligible to earn a part of the protocol's revenue. The rewards are paid out in the protocol's stablecoin which can be redeemed at a 1:1 value.
                     </p>
             </div>
 
@@ -226,7 +226,7 @@ export default function Home() {
                                   Twitter
                               </Link>
 
-                              <Link style={{marginTop: "10px", }} href={"https://basescan.org/token/0xf63fca327c555408819e26edac30f83e55a119f4?a=0x525c4a9e3757639aec2077744a152b20401e06d8"}>
+                              <Link style={{marginTop: "10px", }} href={"https://basescan.org/token/0xf63fca327c555408819e26edac30f83e55a119f4"}>
                                   BaseScan
                               </Link>
                               <Link style={{marginTop: "10px", }} href={"https://app.uniswap.org/swap?outputCurrency=0xf63fca327c555408819e26edac30f83e55a119f4&chain=base"}>
