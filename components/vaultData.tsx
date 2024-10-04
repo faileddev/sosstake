@@ -105,6 +105,11 @@ const VaultData: React.FC = () => {
                 
             )}
 
+<p style={{
+                    fontSize: "8px",
+                    marginTop: "5px"
+                }}>View on Basescan</p>
+
 
                     </div>
 
@@ -119,7 +124,7 @@ const VaultData: React.FC = () => {
                   marginTop: "20px",
                 }}
                   >
-                    <p>Total SOS Staked</p>
+                    <p >Total SOS Staked</p>
                     {loadingTotalDeposit ? (
                 
                 <p>...</p>
@@ -130,7 +135,7 @@ const VaultData: React.FC = () => {
                 <h3>{truncate(toEther(totalDeposit!),2).toLocaleString() }<span style={{fontSize: "8px"}}>SOS</span></h3>
                 
             )}
-                    
+                
                 </div>
 
                 

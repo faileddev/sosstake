@@ -1,12 +1,16 @@
 'use client'
 
-
+import Image from "next/image";
 import { useState } from "react";
+import Sos from "../components/red logo.svg"
+import sUSD from "../components/sUSD.svg"
+
 import { approve, balanceOf } from "thirdweb/extensions/erc20";
 import { TransactionButton, useActiveAccount, useReadContract } from "thirdweb/react";
 import { VAULT_CONTRACT, STAKE_CONTRACT } from "../utils/constants";
 import { prepareContractCall, toEther, toWei } from "thirdweb";
 import { addEvent } from "thirdweb/extensions/farcaster/keyRegistry";
+import Link from "next/link";
 
 
 const VaultOne: React.FC = () => {
@@ -176,7 +180,13 @@ const isUnlockDateReached = currentTime >= unlockTime;
                     }}>
                         <div>
                             <h1>Entry Vault</h1>
-                            <p style={{marginTop: "2px"}}>1 SOS = 0.001<span style={{fontSize: "10px"}}>sUSD</span> Daily </p>
+                            <p style={{marginTop: "2px"}}>1<Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
+                    src={Sos}
+                    alt='logo'
+                    />  = 0.001<Image style={{height: "14px", width: "50px", marginLeft: "5px"}}
+                    src={sUSD}
+                    alt='logo'
+                    />  Daily </p>
                         </div>
 
                         <div style={{textAlign: "right"}}>
@@ -211,13 +221,16 @@ const isUnlockDateReached = currentTime >= unlockTime;
                         </p>
                         
                         {loadingSusdBalance ? (
-          <h1>...<span style={{
-            fontSize: "12px"
-        }}>SOS</span></h1>
+          <h1>...<Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
+          src={Sos}
+          alt='logo'
+          />  </h1>
          ) : (
-          <h1>{truncate(toEther(susdBalance!),2).toLocaleString() }<span style={{
-            fontSize: "12px"
-        }}>SOS</span></h1>
+          <h1>{truncate(toEther(susdBalance!),2).toLocaleString() }<Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
+          src={Sos}
+          alt='logo'
+          />  
+        </h1>
          )} 
          <p style={{
                                 marginTop: "20px"
@@ -228,34 +241,59 @@ const isUnlockDateReached = currentTime >= unlockTime;
             {stakedBalance ? 
                 truncate(toEther(stakedBalance[0] * BigInt(1)).toString(), 2).toLocaleString() 
                 : 
-                '0.00'
+                '...'
             }
-            <span style={{ fontSize: "8px" }}>SOS</span>
-        </h1>
+                <Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
+                    src={Sos}
+                    alt='logo'
+                    />        </h1>
                         </div>
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
                         }}>
-                            <button style={{
-                    marginTop: "20px",
-                    marginBottom: "5px",
-                    padding: "10px",
-                    backgroundColor: "#efefef",
-                    border: "none",
-                    borderRadius: "6px",
-                    color: "#333",
-                    fontSize: "1rem",
-                    cursor: "pointer",}}
-                    onClick={() => setIsMinting(true)}
-                    
-                    >
-
-                                Deposit SOS
-                            </button>
-                            <button style={{
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "space-between",
+                                marginTop: "20px",
+                                marginBottom: "5px",
+                            }}>
+                                <button style={{
+                                                    marginRight: "5px",
+                                                    padding: "10px",
+                                                    backgroundColor: "#efefef",
+                                                    border: "none",
+                                                    borderRadius: "6px",
+                                                    color: "#333",
+                                                    fontSize: "1rem",
+                                                    cursor: "pointer",
+                                                    width: "100%",}}
+                                                    onClick={() => setIsMinting(true)}
+                                                    
+                                                    >
+                                    Deposit SOS
+                                </button>
+                                <button style={{
+                                                    marginLeft: "5px",
+                                                    padding: "10px",
+                                                    backgroundColor: "#efefef",
+                                                    border: "none",
+                                                    borderRadius: "6px",
+                                                    color: "#333",
+                                                    fontSize: "1rem",
+                                                    cursor: "pointer",
+                                                    width: "100%",}}
+                                                    
+                                                    onClick={() => setIsRedeeming(true)}
+                                                    >
+                                    Withdraw SOS
+                                </button>
+                            </div>
+                            <Link style={{
                     marginTop: "5px",
                     marginBottom: "5px",
+                    textAlign: "center",
                     padding: "10px",
                     backgroundColor: "#efefef",
                     border: "none",
@@ -263,11 +301,11 @@ const isUnlockDateReached = currentTime >= unlockTime;
                     color: "#333",
                     fontSize: "1rem",
                     cursor: "pointer",}}
+                    href={"https://app.uniswap.org/swap?outputCurrency=0xf63fca327c555408819e26edac30f83e55a119f4&chain=base"}
                     
-                    onClick={() => setIsRedeeming(true)}
                     >
-                                Withdraw SOS
-                            </button>
+                                Buy SOS
+                            </Link>
                             
                         </div>
                         <div style={{
@@ -289,7 +327,10 @@ const isUnlockDateReached = currentTime >= unlockTime;
                                 : 
                                 '0.00'
                             } 
-                            <span style={{ fontSize: "8px" }}>sUSD</span>
+                            <Image style={{height: "14px", width: "50px", marginLeft: "5px"}}
+                    src={sUSD}
+                    alt='logo'
+                    />
                             </h1>
                         </div>
                         
@@ -361,9 +402,11 @@ const isUnlockDateReached = currentTime >= unlockTime;
                                 Available Balance:
                             </p>
                             <h1>
-                                {truncate(toEther(susdBalance!),2).toLocaleString() }<span style={{
-                                    fontSize: "10px"
-                                }}>SOS</span>
+                                {truncate(toEther(susdBalance!),2).toLocaleString() }
+                                <Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
+                    src={Sos}
+                    alt='logo'
+                    /> 
                             </h1>
 
                             <p style={{
@@ -377,7 +420,10 @@ const isUnlockDateReached = currentTime >= unlockTime;
                 : 
                 '0.00'
             }
-            <span style={{ fontSize: "8px" }}>SOS</span>
+            <Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
+                    src={Sos}
+                    alt='logo'
+                    /> 
         </h1>
 
         
@@ -430,7 +476,12 @@ const isUnlockDateReached = currentTime >= unlockTime;
                             textAlign: "right"
                             
                         }} >
-                            <p style={{marginTop: "10px"}}>10,000<span style={{ fontSize: "8px" }}>SOS</span></p>
+                            <p style={{marginTop: "10px"}}>10,000
+                            <Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
+                    src={Sos}
+                    alt='logo'
+                    />                                 
+                    </p>
                             
                         </div>
                         
@@ -460,7 +511,12 @@ const isUnlockDateReached = currentTime >= unlockTime;
                             textAlign: "right"
                             
                         }} >
-                            <p style={{marginTop: "10px"}}>10,000,000<span style={{ fontSize: "8px" }}>SOS</span></p>
+                            <p style={{marginTop: "10px"}}>10,000,000
+                            <Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
+                    src={Sos}
+                    alt='logo'
+                    />                                 
+                                </p>
                             
                         </div>
 
@@ -501,7 +557,10 @@ const isUnlockDateReached = currentTime >= unlockTime;
                                 : 
                                 '0.00'
                             } 
-                            <span style={{ fontSize: "8px" }}>sUSD</span></p>
+                            <Image style={{height: "14px", width: "50px", marginLeft: "5px"}}
+                    src={sUSD}
+                    alt='logo'
+                    /></p>
                             
                         </div>
 
@@ -532,7 +591,12 @@ const isUnlockDateReached = currentTime >= unlockTime;
                             ) : (
                                 <>
                                 <p style={{marginTop: "10px"}}>Deposit</p>
-                                <h1 style={{ marginTop: "5px"}}>{mintAmount.toLocaleString()}<span style={{fontSize: "12px"}}>SOS</span></h1>
+                                <h1 style={{ marginTop: "5px"}}>{mintAmount.toLocaleString()}
+                                <Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
+                    src={Sos}
+                    alt='logo'
+                    />                                     
+                                    </h1>
                                 
          
          
@@ -639,8 +703,11 @@ const isUnlockDateReached = currentTime >= unlockTime;
                 : 
                 '0.00'
             }
-            <span style={{ fontSize: "8px" }}>SOS</span>
-        </h1>
+<Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
+                    src={Sos}
+                    alt='logo'
+                    /> 
+                            </h1>
 
                             
                             
@@ -784,7 +851,10 @@ new Date(Number(stakeTimeStamp[3]) * 1000).toLocaleString('en-US', {
                                 : 
                                 '0.00'
                             } 
-                            <span style={{ fontSize: "8px" }}>sUSD</span></p>
+                            <Image style={{height: "14px", width: "50px", marginLeft: "5px"}}
+                    src={sUSD}
+                    alt='logo'
+                    /></p>
                             
                         </div>
 
