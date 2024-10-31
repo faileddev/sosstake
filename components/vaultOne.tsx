@@ -179,13 +179,13 @@ const isUnlockDateReached = currentTime >= unlockTime;
                         justifyContent: "space-between"
                     }}>
                         <div>
-                            <h2>Entry Vault</h2>
+                            <h2>Entry Stack</h2>
                             <p style={{marginTop: "2px", fontSize: "12px"}}>1
                                 
                                 <Image style={{height: "10px", width: "10px", marginLeft: "5px"}}
                     src={Sos}
                     alt='logo'
-                    />  = 0.001<Image style={{height: "10px", width: "40px", marginLeft: "1px"}}
+                    />  = 0.00001<Image style={{height: "10px", width: "40px", marginLeft: "1px"}}
                     src={sUSD}
                     alt='logo'
                     />  Daily </p>
@@ -199,7 +199,7 @@ const isUnlockDateReached = currentTime >= unlockTime;
                                 :
                                 'Not Staked'
                             } </h2>
-                            <p> Lock Period</p>
+                            <p> Lockup</p>
                         </div>
                     </div>
                     
@@ -478,7 +478,7 @@ const isUnlockDateReached = currentTime >= unlockTime;
                             textAlign: "right"
                             
                         }} >
-                            <p style={{marginTop: "10px"}}>10,000
+                            <p style={{marginTop: "10px"}}>1,000,000
                             <Image style={{height: "12px", width: "12px", marginLeft: "5px"}}
                     src={Sos}
                     alt='logo'
